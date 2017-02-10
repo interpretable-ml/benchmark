@@ -1,4 +1,8 @@
 *.pyc
-build/bundle.js
 .psiturk_history
 node_modules
+participants.db
+server.log
+trialdata.csv
+questiondata.csv
+eventdata.csv
