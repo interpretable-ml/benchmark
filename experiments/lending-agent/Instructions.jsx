@@ -26,7 +26,7 @@ export default class Instructions extends React.Component {
         <div id="container-instructions">
 
         	<h1>Instructions for part 1</h1>
-{window.condition}
+
         	<hr/>
 
         	<div className="instructions well">
