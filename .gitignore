@@ -1,0 +1,4 @@
+*.pyc
+build/bundle.js
+.psiturk_history
+node_modules
