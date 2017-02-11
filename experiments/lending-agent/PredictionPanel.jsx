@@ -18,6 +18,11 @@ export default class PredictionPanel extends React.Component {
     }
   }
 
+  verify(state, key) {
+    this.props.verify();
+    this.setState({verify: {state: state, key: key}})
+  }
+
   render() {
 
     let props_vals = this.props.data.raw;
@@ -38,9 +43,9 @@ export default class PredictionPanel extends React.Component {
       let vspan = undefined;
       if (this.state.verify.state === "open") {
         if (v1 !== v2) {
-          vspan = <span style={{color: "#999", cursor: "pointer"}} onClick={()=>this.setState({verify: {state: "fixed", key: k}})}> - verify</span>
+          vspan = <span style={{color: "#999", cursor: "pointer"}} onClick={()=>this.verify("fixed", k)}> - verify</span>
         } else {
-          vspan = <span style={{color: "#999", cursor: "pointer"}} onClick={()=>this.setState({verify: {state: "right", key: k}})}> - verify</span>
+          vspan = <span style={{color: "#999", cursor: "pointer"}} onClick={()=>this.verify("right", k)}> - verify</span>
         }
       }
 
@@ -78,7 +83,7 @@ export default class PredictionPanel extends React.Component {
         <div style={{marginTop: '0px'}}><center>
           <b>Application {this.props.position+1} of {this.props.total}</b><br></br>
           <br></br>
-          <span style={{color: "#666"}}>You can verify only one part of the response.</span><br></br>
+          <span style={{color: "#666"}}>You can verify only one part of the response, and if you do it will cost $20.</span><br></br>
           <br></br>
           <table><tbody><tr>
             <td style={{paddingRight: "30px"}}><table><tbody>

@@ -14,16 +14,22 @@ export default class LendingAgentGame extends React.Component {
     this.start_time = new Date().getTime();
     this.discard_application = this.discard_application.bind(this);
     this.submit_application = this.submit_application.bind(this);
+    this.verify = this.verify.bind(this);
     this.state = {
       panel_props: {
         data: lending_data[this.index],
         discard_application: this.discard_application,
         submit_application: this.submit_application,
+        verify: this.verify,
         total: lending_data.length,
         position: this.index
       },
       balance: 0
     }
+  }
+
+  verify() {
+    this.setState({balance: this.state.balance - 20});
   }
 
   discard_application(verify) {
@@ -46,6 +52,7 @@ export default class LendingAgentGame extends React.Component {
       data: lending_data[this.index],
       discard_application: this.discard_application,
       submit_application: this.submit_application,
+      verify: this.verify,
       total: lending_data.length,
       position: this.index
     }});
@@ -74,6 +81,7 @@ export default class LendingAgentGame extends React.Component {
         data: lending_data[this.index],
         discard_application: this.discard_application,
         submit_application: this.submit_application,
+        verify: this.verify,
         total: lending_data.length,
         position: this.index
       },

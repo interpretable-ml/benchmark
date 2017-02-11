@@ -30,4 +30,11 @@ In the `lending-agent` directory run PsiTurk
 
 ```
 psiturk
+
+> server on
+```
+
+Now you can test things and download results with
+```
+> download_datafiles
 ```
