@@ -31,7 +31,7 @@ export default class Instructions extends React.Component {
 
             If you complete this hit and are one of the mentioned workers then I will give you a 0.30 bonus.
 
-            </span>
+            
         	    <script type="text/javascript">
         	    //console.log(psiTurk.getInstructionIndicator())
         	    </script>
