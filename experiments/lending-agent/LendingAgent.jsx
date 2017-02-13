@@ -18,6 +18,7 @@ export default class LendingAgent extends React.Component {
         <Router history={hashHistory}>
           <Route path="/" component={Instructions} />
           <Route path="/instr2" component={Instructions2} />
+          <Route path="/instr2" component={Instructions3} />
           <Route path="/predict" component={LendingAgentGame} />
           <Route path="/debrief" component={Debriefing} />
         </Router>

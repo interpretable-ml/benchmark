@@ -58677,6 +58677,7 @@ var LendingAgent = function (_React$Component) {
           { history: _reactRouter.hashHistory },
           _react2.default.createElement(_reactRouter.Route, { path: '/', component: _Instructions2.default }),
           _react2.default.createElement(_reactRouter.Route, { path: '/instr2', component: _Instructions4.default }),
+          _react2.default.createElement(_reactRouter.Route, { path: '/instr2', component: _Instructions6.default }),
           _react2.default.createElement(_reactRouter.Route, { path: '/predict', component: _LendingAgentGame2.default }),
           _react2.default.createElement(_reactRouter.Route, { path: '/debrief', component: _Debriefing2.default })
         )
