@@ -62060,37 +62060,12 @@ var Instructions = function (_React$Component) {
           _react2.default.createElement(
             'h1',
             null,
-            'Instructions for part 2'
+            'Instructions (page 2 of 2)'
           ),
           _react2.default.createElement('hr', null),
           _react2.default.createElement(
             'div',
             { className: 'instructions well' },
-            _react2.default.createElement(
-              'h2',
-              null,
-              'Part 2: Detect simulated lending application fraud'
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              'In this task you will play the role of a lending agent who has recieved many loan applications.'
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              'There is an AI computer algorithm that computes a "lending score" for each application. Applications with a positive score will be accepted by the bank, while those with a negative score will be rejected.'
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              'If you forward an application to the bank and it is accepted you make $100 in commission (in game money, not real money). But if you send an application to the bank and it is rejected you lose $100 to pay for the bank\'s trouble.'
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              'The challenging part is that applicants may have lied (at most once) on their application in order to get a better score. So your job is to guess if the applicant lied in a way that changed their lending score from being negative to being positive.'
-            ),
             _react2.default.createElement(
               'h3',
               null,
