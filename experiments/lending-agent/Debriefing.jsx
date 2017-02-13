@@ -21,7 +21,6 @@ export default class Instructions extends React.Component {
     psiTurk.saveData({
       success: function(){
           psiTurk.completeHIT();
-          window.close();
       },
       error: this.prompt_resubmit
     });

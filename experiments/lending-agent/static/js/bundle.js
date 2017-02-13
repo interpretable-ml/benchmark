@@ -96974,7 +96974,6 @@ var Instructions = function (_React$Component) {
       psiTurk.saveData({
         success: function success() {
           psiTurk.completeHIT();
-          window.close();
         },
         error: this.prompt_resubmit
       });
