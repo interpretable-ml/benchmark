@@ -25,29 +25,11 @@ export default class Instructions extends React.Component {
       <MuiThemeProvider>
         <div id="container-instructions">
 
-        	<h1>Instructions for part 2</h1>
+        	<h1>Instructions (page 2 of 2)</h1>
 
         	<hr/>
 
         	<div className="instructions well">
-
-            <h2>Part 2: Detect simulated lending application fraud</h2>
-        			<p>In this task you will play the role of a lending agent who has
-        			recieved many loan applications.</p>
-
-        			<p>There is an AI computer algorithm that
-        			computes a "lending score" for each application. Applications with
-        			a positive score will be accepted by the bank, while those with a
-        			negative score will be rejected.</p>
-
-        			<p>If you forward an application to the bank and it is accepted you make $100
-        			in commission (in game money, not real money). But if you send an application to
-        			the bank and it is rejected you lose $100 to pay for the bank's trouble.</p>
-
-        			<p>The challenging part is that applicants may have lied (at most once) on their
-        			application in order to get a better score. So your job is to guess if the
-        			applicant lied in a way that changed their lending score from being negative
-        			to being positive.</p>
 
             <h3>Sample explanation</h3>
 
@@ -56,9 +38,9 @@ export default class Instructions extends React.Component {
             at the top. Red bars represent features that increase the lending score, and blue bars decrease
             the score. The length of the bars are represents how much they change the lending score.</p>
 
-          <p>In the example below the response of having a capital loss of $1,887 is estiamted to increase the lending
-          score from less than -20 to 6.72. Why? Probably because losing a lot of money on investments means
-           you must have a lot to lose.</p>
+            <p>In the example below the response of having a capital loss of $1,887 is estimated to increase the lending
+            score from less than -20 to 6.72. Why? Probably because losing a lot of money on investments means
+            you must have a lot to lose.</p>
 
             <img src="/static/images/Example1.png" />
 

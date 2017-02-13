@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link, hashHistory} from 'react-router';
 import {scaleLinear} from 'd3-scale';
 import {extent} from 'd3-array';
 import {format} from 'd3-format';
@@ -96,12 +97,7 @@ export default class LendingAgentGame extends React.Component {
   }
 
   finish() {
-    console.log("done!")
-    psiTurk.saveData({
-          success: function(){
-              psiTurk.completeHIT();
-          },
-          error: this.prompt_resubmit});
+    hashHistory.push("/debrief");
   }
 
   render() {
