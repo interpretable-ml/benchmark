@@ -1,6 +1,6 @@
 [HIT Configuration]
 title = Artifical intellegence lending score experiment
-description = Challenges people to detect simulated lending fraud with and without lending score explanations.
+description = Game to detect simulated lending fraud (double payment bonus for the top 20% of high scorers).
 amt_keywords = interpretable, machine learning
 lifetime = 24
 us_only = true
