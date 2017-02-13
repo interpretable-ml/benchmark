@@ -97039,7 +97039,7 @@ var Instructions = function (_React$Component) {
             { style: { textAlign: "center" } },
             _react2.default.createElement(_RaisedButton2.default, { onClick: function onClick() {
                 return _this2.finish("agree");
-              }, label: 'Yes, I agree.', primary: true }),
+              }, label: 'Yes, I agree. Complete this HIT', primary: true }),
             _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
             _react2.default.createElement(_RaisedButton2.default, { onClick: function onClick() {

@@ -67,7 +67,7 @@ export default class Instructions extends React.Component {
 
         	</div>
           <div style={{textAlign: "center"}}>
-          <RaisedButton onClick={()=>this.finish("agree")} label="Yes, I agree." primary={true} /><br/><br/>
+          <RaisedButton onClick={()=>this.finish("agree")} label="Yes, I agree. Complete this HIT" primary={true} /><br/><br/>
           <RaisedButton onClick={()=>this.finish("questions")} label="No, please withhold my data. I will contact the experimenter with questions." />
           </div>
 
