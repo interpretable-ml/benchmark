@@ -7,6 +7,7 @@ import TextField from 'material-ui/TextField';
 export default class Instructions extends React.Component {
   constructor() {
     super();
+    this.handleChange = this.handleChange.bind(this);
   }
 
   finish(answer) {

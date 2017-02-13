@@ -96955,7 +96955,10 @@ var Instructions = function (_React$Component) {
   function Instructions() {
     _classCallCheck(this, Instructions);
 
-    return _possibleConstructorReturn(this, (Instructions.__proto__ || Object.getPrototypeOf(Instructions)).call(this));
+    var _this = _possibleConstructorReturn(this, (Instructions.__proto__ || Object.getPrototypeOf(Instructions)).call(this));
+
+    _this.handleChange = _this.handleChange.bind(_this);
+    return _this;
   }
 
   _createClass(Instructions, [{
