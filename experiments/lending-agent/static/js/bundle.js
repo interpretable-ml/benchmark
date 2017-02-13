@@ -61952,7 +61952,13 @@ var Instructions = function (_React$Component) {
             _react2.default.createElement(
               'p',
               null,
-              'We know that the applicant might have lied on one of the reponses, and we are allowed to validate one response for a cost of $20. If an applicant lies it only matters if the lie changes their score from negative to positive. In this example the most important response for raising their score was Capital loss, so we verify that response.'
+              'We know that the applicant might have lied on ',
+              _react2.default.createElement(
+                'b',
+                null,
+                'at most one'
+              ),
+              ' of the responses, and we are allowed to validate one response for a cost of $20. If an applicant lies it only matters if the lie changes their score from negative to positive. In this example the most important response for raising their score was Capital loss, so we verify that response.'
             ),
             _react2.default.createElement(
               'p',
@@ -62085,7 +62091,13 @@ var Instructions = function (_React$Component) {
             _react2.default.createElement(
               'p',
               null,
-              'We know that the applicant might have lied on one of the reponses, and we are allowed to validate one response for a cost of $20. If an applicant lies it only matters if the lie changes their score from negative to positive. In this example we guess that Capital loss was important to the lending score, so we verify that response.'
+              'We know that the applicant might have lied on ',
+              _react2.default.createElement(
+                'b',
+                null,
+                'at most one'
+              ),
+              ' of the responses, and we are allowed to validate one response for a cost of $20. If an applicant lies it only matters if the lie changes their score from negative to positive. In this example we guess that Capital loss was important to the lending score, so we verify that response.'
             ),
             _react2.default.createElement(
               'p',
@@ -95381,128 +95393,10 @@ window.IML = {
 
 /***/ }),
 /* 838 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(3);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouter = __webpack_require__(87);
-
-var _MuiThemeProvider = __webpack_require__(63);
-
-var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
-
-var _RaisedButton = __webpack_require__(84);
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Instructions = function (_React$Component) {
-  _inherits(Instructions, _React$Component);
-
-  function Instructions() {
-    _classCallCheck(this, Instructions);
-
-    return _possibleConstructorReturn(this, (Instructions.__proto__ || Object.getPrototypeOf(Instructions)).call(this));
-  }
-
-  _createClass(Instructions, [{
-    key: 'finish',
-    value: function finish(answer) {
-      window.psiTurk.recordTrialData({
-        'phase': "TEST",
-        'type': "agree",
-        'answer': answer
-      });
-
-      psiTurk.saveData({
-        success: function success() {
-          psiTurk.completeHIT();
-          window.close();
-        },
-        error: this.prompt_resubmit
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      return _react2.default.createElement(
-        _MuiThemeProvider2.default,
-        null,
-        _react2.default.createElement(
-          'div',
-          { id: 'container-instructions' },
-          _react2.default.createElement(
-            'h1',
-            null,
-            'Debriefing'
-          ),
-          _react2.default.createElement('hr', null),
-          _react2.default.createElement(
-            'div',
-            { className: 'instructions well' },
-            _react2.default.createElement(
-              'p',
-              null,
-              'Thank you for your participation in our study!  Your anonymous data makes an important contribution to our understanding of human machine interaction. '
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              'If you have any questions about this research, you may contact Scott Lundberg (slund1@cs.washington.edu).'
-            ),
-            _react2.default.createElement('br', null),
-            _react2.default.createElement(
-              'p',
-              null,
-              'I feel that I have been adequately debriefed about the nature of the study.  The investigator has explained the purposes of the research to me, and I feel that any questions I have asked were satisfactorily answered.'
-            ),
-            _react2.default.createElement(
-              'script',
-              { type: 'text/javascript' },
-              '//console.log(psiTurk.getInstructionIndicator())'
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: { textAlign: "center" } },
-            _react2.default.createElement(_RaisedButton2.default, { onClick: function onClick() {
-                return _this2.finish("agree");
-              }, label: 'Yes, I agree.', primary: true }),
-            _react2.default.createElement('br', null),
-            _react2.default.createElement('br', null),
-            _react2.default.createElement(_RaisedButton2.default, { onClick: function onClick() {
-                return _this2.finish("questions");
-              }, label: 'No, please withhold my data. I will contact the experimenter with questions.' })
-          )
-        )
-      );
-    }
-  }]);
-
-  return Instructions;
-}(_react2.default.Component);
-
-exports.default = Instructions;
+throw new Error("Module build failed: SyntaxError: Unexpected token, expected , (17:6)\n\n\u001b[0m \u001b[90m 15 | \u001b[39m      \u001b[32m'type'\u001b[39m\u001b[33m:\u001b[39m \u001b[32m\"agree\"\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 16 | \u001b[39m      \u001b[32m'answer'\u001b[39m\u001b[33m:\u001b[39m answer\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 | \u001b[39m      \u001b[32m'text'\u001b[39m\u001b[33m:\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mtext\u001b[33m,\u001b[39m\n \u001b[90m    | \u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 | \u001b[39m    })\u001b[33m;\u001b[39m\n \u001b[90m 19 | \u001b[39m\n \u001b[90m 20 | \u001b[39m    psiTurk\u001b[33m.\u001b[39msaveData({\u001b[0m\n");
 
 /***/ })
 /******/ ]);

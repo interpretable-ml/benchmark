@@ -2,19 +2,19 @@ import React from 'react';
 import {Link} from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 export default class Instructions extends React.Component {
   constructor() {
     super();
   }
 
-
-
   finish(answer) {
     window.psiTurk.recordTrialData({
       'phase': "TEST",
       'type': "agree",
       'answer': answer
+      'text': this.text,
     });
 
     psiTurk.saveData({
@@ -24,6 +24,10 @@ export default class Instructions extends React.Component {
       },
       error: this.prompt_resubmit
     });
+  }
+
+  handleChange(event) {
+    this.text = event.target.value;
   }
 
   render() {
@@ -47,6 +51,15 @@ export default class Instructions extends React.Component {
     					research to me, and I feel that any questions I have asked were
     					satisfactorily answered.</p>
 
+            <div style={{textAlign: "center"}}>
+            <TextField style={{width: "400px"}}
+                hintText="Comments"
+                multiLine={true}
+                rows={2}
+                rowsMax={8}
+                onChange={this.handleChange}
+              />
+          </div>
 
         	    <script type="text/javascript">
         	    //console.log(psiTurk.getInstructionIndicator())
