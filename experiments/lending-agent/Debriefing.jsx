@@ -13,8 +13,8 @@ export default class Instructions extends React.Component {
     window.psiTurk.recordTrialData({
       'phase': "TEST",
       'type': "agree",
-      'answer': answer
-      'text': this.text,
+      'answer': answer,
+      'text': this.text
     });
 
     psiTurk.saveData({
