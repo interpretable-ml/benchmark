@@ -44,7 +44,7 @@ export default class Instructions extends React.Component {
               applicant lied in a way that changed their lending score from being negative
               to being positive.</p>
             <span style={{textAlign: "center"}}>
-            <b>A bonus of 2X payment for the HIT will be given to the top 25% of workers ranked by money made.</b><br />
+            <b>A bonus of 2X payment for the HIT will be given to the top 20% of workers ranked by money made.</b><br />
             </span>
         	    <script type="text/javascript">
         	    //console.log(psiTurk.getInstructionIndicator())

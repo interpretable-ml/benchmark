@@ -61821,7 +61821,7 @@ var Instructions = function (_React$Component) {
               _react2.default.createElement(
                 'b',
                 null,
-                'A bonus of 2X payment for the HIT will be given to the top 25% of workers ranked by money made.'
+                'A bonus of 2X payment for the HIT will be given to the top 20% of workers ranked by money made.'
               ),
               _react2.default.createElement('br', null)
             ),
