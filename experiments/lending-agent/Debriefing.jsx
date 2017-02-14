@@ -8,14 +8,23 @@ export default class Debriefing extends React.Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
+
+    this.start_time = new Date().getTime();
+    window.psiTurk.recordTrialData({
+      'mark': "debrief_start",
+      'condition': condition,
+      'time': this.start_time.valueOf()
+    });
   }
 
   finish(answer) {
     window.psiTurk.recordTrialData({
-      'phase': "TEST",
-      'type': "agree",
+      'mark': "debrief_stop",
+      'time': new Date().valueOf(),
+      'condition': condition,
       'answer': answer,
-      'text': this.text
+      'text': this.text,
+      'response_time': new Date().getTime() - this.start_time
     });
 
     psiTurk.saveData({

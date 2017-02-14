@@ -61753,12 +61753,26 @@ var Instructions = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Instructions.__proto__ || Object.getPrototypeOf(Instructions)).call(this));
 
     _this.next_page = _this.next_page.bind(_this);
+
+    _this.start_time = new Date().getTime();
+    window.psiTurk.recordTrialData({
+      'mark': "instructions1_start",
+      'condition': condition,
+      'time': _this.start_time.valueOf()
+    });
     return _this;
   }
 
   _createClass(Instructions, [{
     key: 'next_page',
     value: function next_page() {
+      window.psiTurk.recordTrialData({
+        'mark': "instructions1_stop",
+        'time': new Date().valueOf(),
+        'condition': condition,
+        'response_time': new Date().getTime() - this.start_time
+      });
+
       if (window.condition === 0) _reactRouter.hashHistory.push("/instr2");else if (window.condition === 1) _reactRouter.hashHistory.push("/instr3");
     }
   }, {
@@ -61888,27 +61902,30 @@ var Instructions = function (_React$Component) {
   function Instructions() {
     _classCallCheck(this, Instructions);
 
-    return _possibleConstructorReturn(this, (Instructions.__proto__ || Object.getPrototypeOf(Instructions)).call(this));
+    var _this = _possibleConstructorReturn(this, (Instructions.__proto__ || Object.getPrototypeOf(Instructions)).call(this));
+
+    _this.start = _this.start.bind(_this);
+
+    _this.start_time = new Date().getTime();
+    window.psiTurk.recordTrialData({
+      'mark': "instructions2_start",
+      'condition': condition,
+      'time': _this.start_time.valueOf()
+    });
+    return _this;
   }
 
   _createClass(Instructions, [{
-    key: 'discard_application',
-    value: function discard_application() {
-      var _this2 = this;
+    key: 'start',
+    value: function start() {
+      window.psiTurk.recordTrialData({
+        'mark': "instructions2_stop",
+        'time': new Date().valueOf(),
+        'condition': condition,
+        'response_time': new Date().getTime() - this.start_time
+      });
 
-      this.index++;
-      this.setState({ panel_props: {
-          data: lending_data[this.index],
-          discard_application: function discard_application() {
-            return _this2.discard_application();
-          },
-          submit_application: function submit_application(x) {
-            return _this2.submit_application(x);
-          },
-          total: lending_data.length,
-          position: this.index
-        } });
-      this.render();
+      _reactRouter.hashHistory.push("/predict");
     }
   }, {
     key: 'render',
@@ -61987,11 +62004,7 @@ var Instructions = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { style: { textAlign: "center" } },
-            _react2.default.createElement(
-              _reactRouter.Link,
-              { to: '/predict' },
-              _react2.default.createElement(_RaisedButton2.default, { label: 'Begin Experiment', primary: true })
-            )
+            _react2.default.createElement(_RaisedButton2.default, { label: 'Begin Experiment', primary: true, onClick: this.start })
           )
         )
       );
@@ -62044,27 +62057,30 @@ var Instructions = function (_React$Component) {
   function Instructions() {
     _classCallCheck(this, Instructions);
 
-    return _possibleConstructorReturn(this, (Instructions.__proto__ || Object.getPrototypeOf(Instructions)).call(this));
+    var _this = _possibleConstructorReturn(this, (Instructions.__proto__ || Object.getPrototypeOf(Instructions)).call(this));
+
+    _this.start = _this.start.bind(_this);
+
+    _this.start_time = new Date().getTime();
+    window.psiTurk.recordTrialData({
+      'mark': "instructions3_start",
+      'condition': condition,
+      'time': _this.start_time.valueOf()
+    });
+    return _this;
   }
 
   _createClass(Instructions, [{
-    key: 'discard_application',
-    value: function discard_application() {
-      var _this2 = this;
+    key: 'start',
+    value: function start() {
+      window.psiTurk.recordTrialData({
+        'mark': "instructions3_stop",
+        'time': new Date().valueOf(),
+        'condition': condition,
+        'response_time': new Date().getTime() - this.start_time
+      });
 
-      this.index++;
-      this.setState({ panel_props: {
-          data: lending_data[this.index],
-          discard_application: function discard_application() {
-            return _this2.discard_application();
-          },
-          submit_application: function submit_application(x) {
-            return _this2.submit_application(x);
-          },
-          total: lending_data.length,
-          position: this.index
-        } });
-      this.render();
+      _reactRouter.hashHistory.push("/predict");
     }
   }, {
     key: 'render',
@@ -62133,7 +62149,7 @@ var Instructions = function (_React$Component) {
             'div',
             { style: { textAlign: "center" } },
             _react2.default.createElement(
-              _reactRouter.Link,
+              Link,
               { to: '/predict' },
               _react2.default.createElement(_RaisedButton2.default, { label: 'Begin Experiment', primary: true })
             )
@@ -62219,6 +62235,12 @@ var LendingAgentGame = function (_React$Component) {
       },
       balance: 0
     };
+
+    window.psiTurk.recordTrialData({
+      'mark': "game_start",
+      'condition': condition,
+      'time': _this.start_time.valueOf()
+    });
     return _this;
   }
 
@@ -62229,16 +62251,17 @@ var LendingAgentGame = function (_React$Component) {
     }
   }, {
     key: 'discard_application',
-    value: function discard_application(verify) {
+    value: function discard_application(verify, is_valid) {
       console.log("verify", verify);
       psiTurk.recordTrialData({
-        'phase': "TEST",
-        'type': "predict",
+        'mark': "game_action",
         'condition': condition,
         'index': this.index,
         'action': "discard",
+        'is_valid': is_valid,
         'verify_state': verify.state,
         'verify_key': verify.k,
+        'time': new Date().getTime(),
         'response_time': new Date().getTime() - this.start_time
       });
 
@@ -62258,16 +62281,16 @@ var LendingAgentGame = function (_React$Component) {
     }
   }, {
     key: 'submit_application',
-    value: function submit_application(verify, right) {
+    value: function submit_application(verify, is_valid) {
       window.psiTurk.recordTrialData({
-        'phase': "TEST",
-        'type': "predict",
-        'right': right,
+        'mark': "game_action",
         'condition': condition,
         'index': this.index,
         'action': "submit",
+        'is_valid': is_valid,
         'verify_state': verify.state,
         'verify_key': verify.k,
+        'time': new Date().getTime(),
         'response_time': new Date().getTime() - this.start_time
       });
 
@@ -62283,7 +62306,7 @@ var LendingAgentGame = function (_React$Component) {
           total: _lendingData2.default.length,
           position: this.index
         },
-        balance: this.state.balance + (right ? 100 : -100)
+        balance: this.state.balance + (is_valid ? 100 : -100)
       });
 
       this.render();
@@ -62296,6 +62319,12 @@ var LendingAgentGame = function (_React$Component) {
   }, {
     key: 'finish',
     value: function finish() {
+      window.psiTurk.recordTrialData({
+        'mark': "game_stop",
+        'condition': condition,
+        'time': this.start_time.valueOf(),
+        'response_time': new Date().getTime() - this.start_time
+      });
       _reactRouter.hashHistory.push("/debrief");
     }
   }, {
@@ -62560,7 +62589,7 @@ var PredictionPanel = function (_React$Component) {
               } }),
             '\xA0\xA0\xA0',
             _react2.default.createElement(_RaisedButton2.default, { label: 'Discard application', secondary: true, onClick: function onClick() {
-                var v = _this2.state.verify;console.log("v", v);_this2.setState({ verify: { state: "open" } });console.log("v", v);_this2.props.discard_application(v);
+                var v = _this2.state.verify;console.log("v", v);_this2.setState({ verify: { state: "open" } });_this2.props.discard_application(v, _this2.props.data.fixed.outValue > 0);
               } }),
             _react2.default.createElement('br', null)
           )
@@ -96976,6 +97005,13 @@ var Debriefing = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Debriefing.__proto__ || Object.getPrototypeOf(Debriefing)).call(this));
 
     _this.handleChange = _this.handleChange.bind(_this);
+
+    _this.start_time = new Date().getTime();
+    window.psiTurk.recordTrialData({
+      'mark': "debrief_start",
+      'condition': condition,
+      'time': _this.start_time.valueOf()
+    });
     return _this;
   }
 
@@ -96983,10 +97019,12 @@ var Debriefing = function (_React$Component) {
     key: 'finish',
     value: function finish(answer) {
       window.psiTurk.recordTrialData({
-        'phase': "TEST",
-        'type': "agree",
+        'mark': "debrief_stop",
+        'time': new Date().valueOf(),
+        'condition': condition,
         'answer': answer,
-        'text': this.text
+        'text': this.text,
+        'response_time': new Date().getTime() - this.start_time
       });
 
       psiTurk.saveData({

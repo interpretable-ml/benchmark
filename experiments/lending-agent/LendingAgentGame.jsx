@@ -27,22 +27,29 @@ export default class LendingAgentGame extends React.Component {
       },
       balance: 0
     }
+
+    window.psiTurk.recordTrialData({
+      'mark': "game_start",
+      'condition': condition,
+      'time': this.start_time.valueOf()
+    });
   }
 
   verify() {
     //this.setState({balance: this.state.balance - 20});
   }
 
-  discard_application(verify) {
+  discard_application(verify, is_valid) {
     console.log("verify", verify)
     psiTurk.recordTrialData({
-      'phase': "TEST",
-      'type': "predict",
+      'mark': "game_action",
       'condition': condition,
       'index': this.index,
       'action': "discard",
+      'is_valid': is_valid,
       'verify_state': verify.state,
       'verify_key': verify.k,
+      'time': new Date().getTime(),
       'response_time': new Date().getTime() - this.start_time
     });
 
@@ -61,16 +68,16 @@ export default class LendingAgentGame extends React.Component {
     this.render();
   }
 
-  submit_application(verify, right) {
+  submit_application(verify, is_valid) {
     window.psiTurk.recordTrialData({
-      'phase': "TEST",
-      'type': "predict",
-      'right': right,
+      'mark': "game_action",
       'condition': condition,
       'index': this.index,
       'action': "submit",
+      'is_valid': is_valid,
       'verify_state': verify.state,
       'verify_key': verify.k,
+      'time': new Date().getTime(),
       'response_time': new Date().getTime() - this.start_time
     });
 
@@ -86,7 +93,7 @@ export default class LendingAgentGame extends React.Component {
         total: lending_data.length,
         position: this.index
       },
-      balance: this.state.balance + (right ? 100 : -100)
+      balance: this.state.balance + (is_valid ? 100 : -100)
     });
 
     this.render();
@@ -97,6 +104,12 @@ export default class LendingAgentGame extends React.Component {
   }
 
   finish() {
+    window.psiTurk.recordTrialData({
+      'mark': "game_stop",
+      'condition': condition,
+      'time': this.start_time.valueOf(),
+      'response_time': new Date().getTime() - this.start_time
+    });
     hashHistory.push("/debrief");
   }
 

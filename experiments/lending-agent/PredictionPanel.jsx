@@ -96,7 +96,7 @@ export default class PredictionPanel extends React.Component {
           <br></br>
           <RaisedButton label="Forward application to bank" primary={true} onClick={()=>{var v = this.state.verify; this.setState({verify: {state: "open"}}); this.props.submit_application(v, this.props.data.fixed.outValue > 0)}} />
           &nbsp;&nbsp;&nbsp;
-          <RaisedButton label="Discard application" secondary={true} onClick={()=>{var v = this.state.verify; console.log("v", v); this.setState({verify: {state: "open"}}); console.log("v", v); this.props.discard_application(v)}} /><br></br>
+          <RaisedButton label="Discard application" secondary={true} onClick={()=>{var v = this.state.verify; console.log("v", v); this.setState({verify: {state: "open"}}); this.props.discard_application(v, this.props.data.fixed.outValue > 0)}} /><br></br>
         </center></div>
       </div>
     );

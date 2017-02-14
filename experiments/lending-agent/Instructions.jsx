@@ -7,9 +7,23 @@ export default class Instructions extends React.Component {
   constructor() {
     super();
     this.next_page = this.next_page.bind(this);
+
+    this.start_time = new Date().getTime();
+    window.psiTurk.recordTrialData({
+      'mark': "instructions1_start",
+      'condition': condition,
+      'time': this.start_time.valueOf()
+    });
   }
 
   next_page() {
+    window.psiTurk.recordTrialData({
+      'mark': "instructions1_stop",
+      'time': new Date().valueOf(),
+      'condition': condition,
+      'response_time': new Date().getTime() - this.start_time
+    });
+
     if (window.condition === 0) hashHistory.push("/instr2");
     else if (window.condition === 1) hashHistory.push("/instr3");
   }

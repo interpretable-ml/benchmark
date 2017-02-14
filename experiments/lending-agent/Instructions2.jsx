@@ -1,23 +1,30 @@
 import React from 'react';
-import {Link} from 'react-router';
+import {hashHistory} from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 
 export default class Instructions extends React.Component {
   constructor() {
     super();
+    this.start = this.start.bind(this);
+
+    this.start_time = new Date().getTime();
+    window.psiTurk.recordTrialData({
+      'mark': "instructions2_start",
+      'condition': condition,
+      'time': this.start_time.valueOf()
+    });
   }
 
-  discard_application() {
-    this.index++;
-    this.setState({panel_props: {
-      data: lending_data[this.index],
-      discard_application: ()=>this.discard_application(),
-      submit_application: x=>this.submit_application(x),
-      total: lending_data.length,
-      position: this.index
-    }});
-    this.render();
+  start() {
+    window.psiTurk.recordTrialData({
+      'mark': "instructions2_stop",
+      'time': new Date().valueOf(),
+      'condition': condition,
+      'response_time': new Date().getTime() - this.start_time
+    });
+
+    hashHistory.push("/predict");
   }
 
   render() {
@@ -64,7 +71,7 @@ export default class Instructions extends React.Component {
 
         	</div>
           <div style={{textAlign: "center"}}>
-          <Link to="/predict"><RaisedButton label="Begin Experiment" primary={true} /></Link>
+          <RaisedButton label="Begin Experiment" primary={true} onClick={this.start} />
           </div>
 
         </div>
