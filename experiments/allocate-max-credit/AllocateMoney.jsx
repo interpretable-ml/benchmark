@@ -12,8 +12,13 @@ export default class AllocateMoney extends React.Component {
       man2: 0,
       man3: 0
     };
-    var start_time = new Date().getTime();
+    this.start_time = new Date().getTime();
     this.handleChange = this.handleChange.bind(this);
+
+    window.psiTurk.recordTrialData({
+      'mark': "allocate_start",
+      'time': this.start_time.valueOf()
+    });
   }
 
   handleChange(event) {
@@ -25,22 +30,19 @@ export default class AllocateMoney extends React.Component {
   }
 
   saveAnswers() {
-    console.log(this.state)
     if (parseInt(this.state.man1) + parseInt(this.state.man2) + parseInt(this.state.man3) !== 5) {
       alert("Please allocate exactly $5 among the three men before continuing.");
     } else {
       window.psiTurk.recordTrialData({
-        'phase': "TEST",
-        'type': "allocate",
-        'condition': condition,
+        'mark': "allocate_stop",
         'man1': parseInt(this.state.man1),
         'man2': parseInt(this.state.man2),
         'man3': parseInt(this.state.man3),
+        'time': new Date().valueOf(),
         'response_time': new Date().getTime() - this.start_time
       });
 
-      if (window.condition === 0) hashHistory.push("/instr2");
-      else if (window.condition === 1) hashHistory.push("/instr3");
+      hashHistory.push("/debrief");
     }
   }
 
@@ -49,7 +51,7 @@ export default class AllocateMoney extends React.Component {
       <MuiThemeProvider>
         <div id="container-instructions">
 
-        	<h1>Part 1: Allocate money among a group of people </h1>
+        	<h1>Allocate money among a group of people </h1>
 
         	<hr/>
 
@@ -74,17 +76,9 @@ export default class AllocateMoney extends React.Component {
                 </tr>
               </tbody></table>
 
-
-
-
-
-        	    <script type="text/javascript">
-        	    //console.log(psiTurk.getInstructionIndicator())
-        	    </script>
-
         	</div>
           <div style={{textAlign: "center"}}>
-          <RaisedButton label="Submit answer to part 1" primary={true} onClick={()=>this.saveAnswers()} />
+          <RaisedButton label="Submit answer" primary={true} onClick={()=>this.saveAnswers()} />
           </div>
 
         </div>

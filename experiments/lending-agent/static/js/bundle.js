@@ -96949,19 +96949,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Instructions = function (_React$Component) {
-  _inherits(Instructions, _React$Component);
+var Debriefing = function (_React$Component) {
+  _inherits(Debriefing, _React$Component);
 
-  function Instructions() {
-    _classCallCheck(this, Instructions);
+  function Debriefing() {
+    _classCallCheck(this, Debriefing);
 
-    var _this = _possibleConstructorReturn(this, (Instructions.__proto__ || Object.getPrototypeOf(Instructions)).call(this));
+    var _this = _possibleConstructorReturn(this, (Debriefing.__proto__ || Object.getPrototypeOf(Debriefing)).call(this));
 
     _this.handleChange = _this.handleChange.bind(_this);
     return _this;
   }
 
-  _createClass(Instructions, [{
+  _createClass(Debriefing, [{
     key: 'finish',
     value: function finish(answer) {
       window.psiTurk.recordTrialData({
@@ -97053,10 +97053,10 @@ var Instructions = function (_React$Component) {
     }
   }]);
 
-  return Instructions;
+  return Debriefing;
 }(_react2.default.Component);
 
-exports.default = Instructions;
+exports.default = Debriefing;
 
 /***/ })
 /******/ ]);

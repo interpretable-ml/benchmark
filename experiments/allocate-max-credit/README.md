@@ -26,12 +26,13 @@ psiturk_secret_access_id = XXXXXXXXXXXXXX
 
 In `config.txt` replace the host name with the public name of the machine.
 
-In the `lending-agent` directory run PsiTurk
+In the current directory run PsiTurk
 
 ```
 psiturk
 
 > server on
+> debug
 ```
 
 Now you can test things and download results with

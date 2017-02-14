@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
-export default class Instructions extends React.Component {
+export default class Debriefing extends React.Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);

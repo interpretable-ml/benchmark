@@ -4,18 +4,24 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
-export default class Instructions extends React.Component {
+export default class Debrief extends React.Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
+    this.start_time = new Date();
+    window.psiTurk.recordTrialData({
+      'mark': "debrief_start",
+      'time': this.start_time.valueOf()
+    });
   }
 
   finish(answer) {
     window.psiTurk.recordTrialData({
-      'phase': "TEST",
-      'type': "agree",
+      'mark': "debrief_end",
       'answer': answer,
-      'text': this.text
+      'text': this.text,
+      'time': new Date().valueOf(),
+      'response_time': new Date() - this.start_time
     });
 
     psiTurk.saveData({
@@ -39,18 +45,10 @@ export default class Instructions extends React.Component {
 
         	<hr/>
 
-        	<div className="instructions well">
-
             <p>Thank you for your participation in our study!  Your anonymous data makes an
-        		important contribution to our understanding of human machine interaction. </p>
+            important contribution to our understanding of human machine interaction. </p>
 
-          <p>If you have any questions about this research, you may contact Scott Lundberg (slund1@cs.washington.edu).</p>
-          <br />
-            <p>I feel that I have been adequately debriefed about the nature
-    					of the study.  The investigator has explained the purposes of the
-    					research to me, and I feel that any questions I have asked were
-    					satisfactorily answered.</p>
-
+          <p>If you have any questions about this research, you may contact slund1@cs.washington.edu.</p>
             <div style={{textAlign: "center"}}>
             <TextField style={{width: "400px"}}
                 hintText="Comments"
@@ -60,6 +58,13 @@ export default class Instructions extends React.Component {
                 onChange={this.handleChange}
               />
           </div>
+          <br/>
+        	<div className="instructions well">
+
+            <p>I feel that I have been adequately debriefed about the nature
+    					of the study.  The investigator has explained the purposes of the
+    					research to me, and I feel that any questions I have asked were
+    					satisfactorily answered.</p>
 
         	    <script type="text/javascript">
         	    //console.log(psiTurk.getInstructionIndicator())
