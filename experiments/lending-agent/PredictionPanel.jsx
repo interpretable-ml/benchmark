@@ -83,7 +83,7 @@ export default class PredictionPanel extends React.Component {
         <div style={{marginTop: '0px'}}><center>
           <b>Application {this.props.position+1} of {this.props.total}</b><br></br>
           <br></br>
-          <span style={{color: "#666"}}>You can verify only one part of the response, and if you do it will cost $20.</span><br></br>
+          <span style={{color: "#666"}}>You can verify only one part of the response.</span><br></br>
           <br></br>
           <table><tbody><tr>
             <td style={{paddingRight: "30px"}}><table><tbody>

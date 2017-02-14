@@ -41,8 +41,8 @@ export default class Instructions extends React.Component {
 
               <h3>Sample explanation verified</h3>
 
-              <p>We know that the applicant might have lied on <b>at most one</b> of the responses, and we are allowed to validate
-              one response for a cost of $20. If an applicant lies it only matters if the lie changes their score from negative to positive.
+              <p>We know that the applicant might have lied on <b>at most one</b> of the responses, and we are allowed to <b>verify
+              one response</b>. If an applicant lies it only matters if the lie changes their score from negative to positive.
               In this example we guess that Capital loss was important to the lending score, so we verify that response.</p>
 
             <p>For this application it turns out the capital loss was a lie! This changes the score to be negative and we should discard the

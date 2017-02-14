@@ -30,7 +30,7 @@ export default class LendingAgentGame extends React.Component {
   }
 
   verify() {
-    this.setState({balance: this.state.balance - 20});
+    //this.setState({balance: this.state.balance - 20});
   }
 
   discard_application(verify) {

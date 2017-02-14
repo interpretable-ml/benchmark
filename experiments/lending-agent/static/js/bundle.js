@@ -61958,7 +61958,19 @@ var Instructions = function (_React$Component) {
                 null,
                 'at most one'
               ),
-              ' of the responses, and we are allowed to validate one response for a cost of $20. If an applicant lies it only matters if the lie changes their score from negative to positive. In this example the most important response for raising their score was Capital loss, so we verify that response.'
+              ' of the responses, and we are allowed to ',
+              _react2.default.createElement(
+                'b',
+                null,
+                'verify one response'
+              ),
+              '. If an applicant lies it only matters if the lie changes their score from negative to positive. ',
+              _react2.default.createElement(
+                'b',
+                null,
+                'Usually you want to verify the response that matches the largest red bar.'
+              ),
+              ' In this example the most important response for raising their score was Capital loss, so we verify that response.'
             ),
             _react2.default.createElement(
               'p',
@@ -62097,7 +62109,13 @@ var Instructions = function (_React$Component) {
                 null,
                 'at most one'
               ),
-              ' of the responses, and we are allowed to validate one response for a cost of $20. If an applicant lies it only matters if the lie changes their score from negative to positive. In this example we guess that Capital loss was important to the lending score, so we verify that response.'
+              ' of the responses, and we are allowed to ',
+              _react2.default.createElement(
+                'b',
+                null,
+                'verify one response'
+              ),
+              '. If an applicant lies it only matters if the lie changes their score from negative to positive. In this example we guess that Capital loss was important to the lending score, so we verify that response.'
             ),
             _react2.default.createElement(
               'p',
@@ -62207,7 +62225,7 @@ var LendingAgentGame = function (_React$Component) {
   _createClass(LendingAgentGame, [{
     key: 'verify',
     value: function verify() {
-      this.setState({ balance: this.state.balance - 20 });
+      //this.setState({balance: this.state.balance - 20});
     }
   }, {
     key: 'discard_application',
@@ -62494,7 +62512,7 @@ var PredictionPanel = function (_React$Component) {
             _react2.default.createElement(
               'span',
               { style: { color: "#666" } },
-              'You can verify only one part of the response, and if you do it will cost $20.'
+              'You can verify only one part of the response.'
             ),
             _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
