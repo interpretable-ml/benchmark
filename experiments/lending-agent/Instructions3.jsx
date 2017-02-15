@@ -64,7 +64,7 @@ export default class Instructions extends React.Component {
 
         	</div>
           <div style={{textAlign: "center"}}>
-          <Link to="/predict"><RaisedButton label="Begin Experiment" primary={true} /></Link>
+          <RaisedButton label="Begin Experiment" primary={true} onClick={this.start} />
           </div>
 
         </div>
