@@ -35,7 +35,7 @@ export default class Instructions extends React.Component {
       	<hr/>
 
       	<div className="instructions well">
-          You will be asked to allocate blame for a person's "sickness score", which ranges from 0 (not sick) to 5 (really sick).<br/>
+          You will be asked to allocate blame for a person's "sickness score", where 0 is healthy and higher numbers mean more sickness.
       	</div>
 
         <div style={{textAlign: "center"}}>

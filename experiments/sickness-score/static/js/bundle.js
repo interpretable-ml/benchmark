@@ -14695,8 +14695,7 @@ var Instructions = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'instructions well' },
-          'You will be asked to allocate blame for a person\'s "sickness score", which ranges from 0 (not sick) to 5 (really sick).',
-          _react2.default.createElement('br', null)
+          'You will be asked to allocate blame for a person\'s "sickness score", where 0 is healthy and higher numbers mean more sickness.'
         ),
         _react2.default.createElement(
           'div',
