@@ -14375,6 +14375,10 @@ var _Allocate3 = __webpack_require__(436);
 
 var _Allocate4 = _interopRequireDefault(_Allocate3);
 
+var _Allocate5 = __webpack_require__(437);
+
+var _Allocate6 = _interopRequireDefault(_Allocate5);
+
 var _Debrief = __webpack_require__(192);
 
 var _Debrief2 = _interopRequireDefault(_Debrief);
@@ -14411,6 +14415,7 @@ var Main = function (_React$Component) {
             _react2.default.createElement(_reactRouter.Route, { path: '/', component: _Instructions2.default }),
             _react2.default.createElement(_reactRouter.Route, { path: '/allocate1', component: _Allocate2.default }),
             _react2.default.createElement(_reactRouter.Route, { path: '/allocate2', component: _Allocate4.default }),
+            _react2.default.createElement(_reactRouter.Route, { path: '/allocate3', component: _Allocate6.default }),
             _react2.default.createElement(_reactRouter.Route, { path: '/debrief', component: _Debrief2.default })
           )
         )
@@ -14671,7 +14676,9 @@ var Instructions = function (_React$Component) {
         'response_time': new Date() - this.start_time
       });
 
-      if (condition === 0) _reactRouter.hashHistory.push("/allocate1");else if (condition === 1) _reactRouter.hashHistory.push("/allocate2");
+      _reactRouter.hashHistory.push("/allocate3");
+      // if (condition === 0) hashHistory.push("/allocate1");
+      // else if (condition === 1) hashHistory.push("/allocate2");
     }
   }, {
     key: 'render',
@@ -40189,6 +40196,409 @@ var Allocate = function (_React$Component) {
                       ' point(s)',
                       _react2.default.createElement('br', null),
                       'Congestion: ',
+                      _react2.default.createElement(
+                        'b',
+                        { style: { color: "#990000" } },
+                        'YES'
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { style: { textAlign: "center" } },
+            _react2.default.createElement(_RaisedButton2.default, { label: 'Submit answer', primary: true, onClick: function onClick() {
+                return _this2.saveAnswers();
+              } })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Allocate;
+}(_react2.default.Component);
+
+exports.default = Allocate;
+
+/***/ }),
+/* 437 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouter = __webpack_require__(75);
+
+var _MuiThemeProvider = __webpack_require__(97);
+
+var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
+
+var _RaisedButton = __webpack_require__(96);
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _TextField = __webpack_require__(152);
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Allocate = function (_React$Component) {
+  _inherits(Allocate, _React$Component);
+
+  function Allocate() {
+    _classCallCheck(this, Allocate);
+
+    var _this = _possibleConstructorReturn(this, (Allocate.__proto__ || Object.getPrototypeOf(Allocate)).call(this));
+
+    _this.state = {
+      fever: 0,
+      cough: 0,
+      congestion: 0,
+      headache: 0
+    };
+    _this.start_time = new Date().getTime();
+    _this.handleChange = _this.handleChange.bind(_this);
+
+    window.psiTurk.recordTrialData({
+      'mark': "allocate_start",
+      'time': _this.start_time.valueOf()
+    });
+    return _this;
+  }
+
+  _createClass(Allocate, [{
+    key: 'handleChange',
+    value: function handleChange(event) {
+      if (event.target.value !== undefined) {
+        var data = {};
+        data[event.target.name] = event.target.value;
+        this.setState(data);
+      }
+    }
+  }, {
+    key: 'saveAnswers',
+    value: function saveAnswers() {
+      if (parseInt(this.state.fever) + parseInt(this.state.cough) + parseInt(this.state.congestion) === 0) {
+        alert("Please consider carefully how to allocate blame among the symptoms before submitting.");
+      } else {
+        window.psiTurk.recordTrialData({
+          'mark': "allocate_stop",
+          'fever': true,
+          'cough': true,
+          'congestion': true,
+          'headache': true,
+          'fever_credit': parseInt(this.state.fever),
+          'cough_credit': parseInt(this.state.cough),
+          'congestion_credit': parseInt(this.state.congestion),
+          'headache_credit': parseInt(this.state.headache),
+          'time': new Date().valueOf(),
+          'condition': condition,
+          'response_time': new Date().getTime() - this.start_time
+        });
+
+        _reactRouter.hashHistory.push("/debrief");
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        _MuiThemeProvider2.default,
+        null,
+        _react2.default.createElement(
+          'div',
+          { id: 'container-instructions' },
+          _react2.default.createElement(
+            'h1',
+            null,
+            'Allocate blame among a set of symptoms'
+          ),
+          _react2.default.createElement('hr', null),
+          _react2.default.createElement(
+            'div',
+            { className: 'instructions well' },
+            _react2.default.createElement(
+              'p',
+              null,
+              'People are diagnosed using a "sickness score" computed in the following manner:'
+            ),
+            _react2.default.createElement(
+              'div',
+              { style: { textAlign: "center" } },
+              _react2.default.createElement(
+                'table',
+                { style: { display: "inline-block", textAlign: "left" } },
+                _react2.default.createElement(
+                  'tbody',
+                  null,
+                  _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                      'td',
+                      { style: { textAlign: "right", padding: "3px" } },
+                      'If they have a fever:'
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      '+2 points'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                      'td',
+                      { style: { textAlign: "right", padding: "3px" } },
+                      'If they have ',
+                      _react2.default.createElement(
+                        'i',
+                        null,
+                        'both'
+                      ),
+                      ' a cough and congestion:'
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      '+6 points'
+                    )
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement('br', null),
+            'One person has the following symptoms:',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'div',
+              { style: { textAlign: "center" } },
+              _react2.default.createElement(
+                'table',
+                { style: { display: "inline-block", textAlign: "left" } },
+                _react2.default.createElement(
+                  'tbody',
+                  null,
+                  _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                      'td',
+                      { style: { textAlign: "right", padding: "3px" } },
+                      'Fever:'
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      { style: { fontWeight: "bold", color: "#990000" } },
+                      'YES'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                      'td',
+                      { style: { textAlign: "right", padding: "3px" } },
+                      'Cough:'
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      { style: { fontWeight: "bold", color: "#990000" } },
+                      'YES'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                      'td',
+                      { style: { textAlign: "right", padding: "3px" } },
+                      'Congestion:'
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      { style: { fontWeight: "bold", color: "#990000" } },
+                      'YES'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                      'td',
+                      { style: { textAlign: "right", padding: "3px" } },
+                      'Headache:'
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      { style: { fontWeight: "bold", color: "#990000" } },
+                      'YES'
+                    )
+                  )
+                )
+              )
+            ),
+            'This leads to a sickness score of ',
+            _react2.default.createElement(
+              'b',
+              null,
+              '8 points'
+            ),
+            ' becase:',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'div',
+              { style: { textAlign: "center" } },
+              _react2.default.createElement(
+                'table',
+                { style: { display: "inline-block", textAlign: "left" } },
+                _react2.default.createElement(
+                  'tbody',
+                  null,
+                  _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                      'td',
+                      { style: { textAlign: "right", padding: "3px" } },
+                      'They have a fever:'
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      { style: { fontWeight: "bold" } },
+                      '+2 points'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                      'td',
+                      { style: { textAlign: "right", padding: "3px" } },
+                      'They have ',
+                      _react2.default.createElement(
+                        'i',
+                        null,
+                        'both'
+                      ),
+                      ' a cough and congestion:'
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      { style: { fontWeight: "bold" } },
+                      '+6 points'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                      'td',
+                      { style: { textAlign: "right", padding: "3px" } },
+                      'Total sickness score:'
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      { style: { fontWeight: "bold" } },
+                      '8 points'
+                    )
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement('br', null),
+            'Using numbers please allocate blame for their sickness score of ',
+            _react2.default.createElement(
+              'b',
+              null,
+              '8 points'
+            ),
+            ' among each of the following symptoms:',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'div',
+              { style: { textAlign: "center" } },
+              _react2.default.createElement(
+                'table',
+                { style: { display: "inline-block", textAlign: "left" } },
+                _react2.default.createElement(
+                  'tbody',
+                  null,
+                  _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                      'td',
+                      { style: { textAlign: "center", width: "150px" } },
+                      _react2.default.createElement(_TextField2.default, { name: 'fever', value: this.state.fever, onChange: this.handleChange, style: { width: "20px", marginLeft: 3, marginRight: 3 } }),
+                      ' point(s)',
+                      _react2.default.createElement('br', null),
+                      'Fever: ',
+                      _react2.default.createElement(
+                        'b',
+                        { style: { color: "#990000" } },
+                        'YES'
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      { style: { textAlign: "center", width: "150px" } },
+                      _react2.default.createElement(_TextField2.default, { name: 'cough', value: this.state.cough, onChange: this.handleChange, style: { width: "20px", marginLeft: 3, marginRight: 3 } }),
+                      ' point(s)',
+                      _react2.default.createElement('br', null),
+                      'Cough: ',
+                      _react2.default.createElement(
+                        'b',
+                        { style: { color: "#990000" } },
+                        'YES'
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      { style: { textAlign: "center", width: "150px" } },
+                      _react2.default.createElement(_TextField2.default, { name: 'congestion', value: this.state.congestion, onChange: this.handleChange, style: { width: "20px", marginLeft: 3 } }),
+                      ' point(s)',
+                      _react2.default.createElement('br', null),
+                      'Congestion: ',
+                      _react2.default.createElement(
+                        'b',
+                        { style: { color: "#990000" } },
+                        'YES'
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      { style: { textAlign: "center", width: "150px" } },
+                      _react2.default.createElement(_TextField2.default, { name: 'headache', value: this.state.headache, onChange: this.handleChange, style: { width: "20px", marginLeft: 3 } }),
+                      ' point(s)',
+                      _react2.default.createElement('br', null),
+                      'Headache: ',
                       _react2.default.createElement(
                         'b',
                         { style: { color: "#990000" } },
