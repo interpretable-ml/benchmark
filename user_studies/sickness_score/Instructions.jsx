@@ -23,7 +23,7 @@ export default class Instructions extends React.Component {
       'response_time': new Date() - this.start_time
     });
 
-    hashHistory.push("/allocate3");
+    hashHistory.push("/allocate4");
     // if (condition === 0) hashHistory.push("/allocate1");
     // else if (condition === 1) hashHistory.push("/allocate2");
   }
