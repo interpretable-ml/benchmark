@@ -55,7 +55,7 @@ export default class AssignCompetitiveLoss extends React.Component {
       <MuiThemeProvider>
         <div id="container-instructions">
 
-        	<h1>Allocate blame among a set of symptoms</h1>
+        	<h1>Assign blame among a set of symptoms</h1>
 
         	<hr/>
 

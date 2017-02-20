@@ -16146,7 +16146,7 @@ var AssignCompetitiveLoss = function (_React$Component) {
           _react2.default.createElement(
             'h1',
             null,
-            'Allocate blame among a set of symptoms'
+            'Assign blame among a set of symptoms'
           ),
           _react2.default.createElement('hr', null),
           _react2.default.createElement(
