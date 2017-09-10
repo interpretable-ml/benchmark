@@ -115,9 +115,9 @@ export default class AssignCompetitiveLoss extends React.Component {
                 </tr>
               </tbody></table>
               </div>
-              After learning these symtoms, the doctor now knows their risk has increased from <b>20%</b> to <b>80%</b>.<br/>
+              After learning these symtoms, the doctor now knows their risk has <b>increased 60%</b> from 20% to 80%.<br/>
               <br/>
-              Using numbers please assign blame for this increase in risk among the two symptoms:<br/>
+              Using numbers please assign blame for this 60% increase in risk among the two symptoms:<br/>
 
             <br/><br/>
               <div style={{textAlign: "center"}}>
