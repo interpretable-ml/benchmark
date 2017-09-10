@@ -30,8 +30,9 @@ export default class AssignCompetitiveLoss extends React.Component {
   }
 
   saveAnswers() {
-    if (parseInt(this.state.fever) + parseInt(this.state.cough) + parseInt(this.state.congestion) === 0) {
-      alert("Please consider carefully how to assign blame among the symptoms before submitting.");
+
+    if (parseInt(this.state.fever) + parseInt(this.state.cough) === 0) {
+      alert("Please consider carefully how to assign non-zero blame among the symptoms before submitting.");
     } else {
       window.psiTurk.recordTrialData({
         'mark': "assign_stop",
@@ -123,11 +124,11 @@ export default class AssignCompetitiveLoss extends React.Component {
               <table style={{display: "inline-block", textAlign: "left"}}><tbody>
                 <tr>
                   <td style={{textAlign: "center", width: "150px"}}>
-                    <TextField name="fever" value={this.state.fever} onChange={this.handleChange} style={{width: "20px", marginLeft: 3, marginRight: 3}} /> point(s)<br/>
+                    <TextField name="fever" value={this.state.fever} onChange={this.handleChange} style={{width: "20px", marginLeft: 3, marginRight: 3}} /> %<br/>
                     Fever: <b style={{color: "#990000"}}>YES</b>
                   </td>
                   <td style={{textAlign: "center", width: "150px"}}>
-                    <TextField name="cough" value={this.state.cough} onChange={this.handleChange} style={{width: "20px", marginLeft: 3, marginRight: 3}} /> point(s)<br/>
+                    <TextField name="cough" value={this.state.cough} onChange={this.handleChange} style={{width: "20px", marginLeft: 3, marginRight: 3}} /> %<br/>
                     Cough: <b style={{color: "#990000"}}>YES</b>
                   </td>
                 </tr>

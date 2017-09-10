@@ -16113,8 +16113,9 @@ var AssignCompetitiveLoss = function (_React$Component) {
   }, {
     key: 'saveAnswers',
     value: function saveAnswers() {
-      if (parseInt(this.state.fever) + parseInt(this.state.cough) + parseInt(this.state.congestion) === 0) {
-        alert("Please consider carefully how to assign blame among the symptoms before submitting.");
+
+      if (parseInt(this.state.fever) + parseInt(this.state.cough) === 0) {
+        alert("Please consider carefully how to assign non-zero blame among the symptoms before submitting.");
       } else {
         window.psiTurk.recordTrialData({
           'mark': "assign_stop",
@@ -16292,7 +16293,7 @@ var AssignCompetitiveLoss = function (_React$Component) {
                       'td',
                       { style: { textAlign: "center", width: "150px" } },
                       _react2.default.createElement(_TextField2.default, { name: 'fever', value: this.state.fever, onChange: this.handleChange, style: { width: "20px", marginLeft: 3, marginRight: 3 } }),
-                      ' point(s)',
+                      ' %',
                       _react2.default.createElement('br', null),
                       'Fever: ',
                       _react2.default.createElement(
@@ -16305,7 +16306,7 @@ var AssignCompetitiveLoss = function (_React$Component) {
                       'td',
                       { style: { textAlign: "center", width: "150px" } },
                       _react2.default.createElement(_TextField2.default, { name: 'cough', value: this.state.cough, onChange: this.handleChange, style: { width: "20px", marginLeft: 3, marginRight: 3 } }),
-                      ' point(s)',
+                      ' %',
                       _react2.default.createElement('br', null),
                       'Cough: ',
                       _react2.default.createElement(
