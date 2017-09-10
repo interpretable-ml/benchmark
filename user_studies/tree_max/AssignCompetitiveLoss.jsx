@@ -117,7 +117,7 @@ export default class AssignCompetitiveLoss extends React.Component {
               </div>
               After learning these symptoms, the doctor now knows their risk has <b>increased 60 points</b> from 20 to 80.<br/>
               <br/>
-              What portion of this 60 point increase in risk is attributable to each of the two symptoms?<br/>
+              <b>Please aportion this 60 point increase among each of the two symptoms as you think best:</b><br/>
 
             <br/><br/>
               <div style={{textAlign: "center"}}>

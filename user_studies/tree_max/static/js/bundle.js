@@ -16267,7 +16267,11 @@ var AssignCompetitiveLoss = function (_React$Component) {
             ' from 20 to 80.',
             _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
-            'What portion of this 60 point increase in risk is attributable to each of the two symptoms?',
+            _react2.default.createElement(
+              'b',
+              null,
+              'Please aportion this 60 point increase among each of the two symptoms as you think best:'
+            ),
             _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
