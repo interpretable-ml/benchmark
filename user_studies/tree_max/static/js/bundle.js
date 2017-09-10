@@ -16258,7 +16258,7 @@ var AssignCompetitiveLoss = function (_React$Component) {
                 )
               )
             ),
-            'After learning these symtoms, the doctor now knows their risk has ',
+            'After learning these symptoms, the doctor now knows their risk has ',
             _react2.default.createElement(
               'b',
               null,
@@ -16267,7 +16267,7 @@ var AssignCompetitiveLoss = function (_React$Component) {
             ' from 20% to 80%.',
             _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
-            'Using numbers please assign blame for this 60% increase in risk among the two symptoms:',
+            'What portion of this 60% increase in risk is attributable to each of the two symptoms? (the numbers below do not need to add to 100)',
             _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
