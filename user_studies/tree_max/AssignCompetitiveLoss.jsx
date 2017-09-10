@@ -62,7 +62,7 @@ export default class AssignCompetitiveLoss extends React.Component {
 
         	<div className="instructions well">
 
-              <p>People's chance of having a certain disease is computed in the following manner:</p>
+              <p>People's risk of having a certain disease is computed in the following manner:</p>
 
               <div style={{textAlign: "center"}}>
               <table style={{display: "inline-block", textAlign: "left"}}><tbody>
@@ -71,7 +71,7 @@ export default class AssignCompetitiveLoss extends React.Component {
                     If they have a fever <i>AND</i> a cough:
                   </td>
                   <td>
-                    80% chance
+                    80
                   </td>
                 </tr>
                 <tr>
@@ -79,7 +79,7 @@ export default class AssignCompetitiveLoss extends React.Component {
                     Otherwise:
                   </td>
                   <td>
-                    0% chance
+                    0
                   </td>
                 </tr>
               </tbody></table>
@@ -90,7 +90,7 @@ export default class AssignCompetitiveLoss extends React.Component {
               <br/><br/>
               </div>
 
-              Among all the people an equal proportion have fever AND cough, just fever, just cough, and neither fever nor cough. This means that before a doctor knows a person's symptoms their chance of having the disease is 20% (which is 80% * 1/4).<br/>
+              Among all the people an equal proportion have fever AND cough, just fever, just cough, and neither fever nor cough. This means that before a doctor knows a person's symptoms their risk of having the disease is 20 (which is (80+0+0+0)/4, the average risk).<br/>
 
 
               <br/>
@@ -115,20 +115,20 @@ export default class AssignCompetitiveLoss extends React.Component {
                 </tr>
               </tbody></table>
               </div>
-              After learning these symptoms, the doctor now knows their risk has <b>increased 60%</b> from 20% to 80%.<br/>
+              After learning these symptoms, the doctor now knows their risk has <b>increased 60 points</b> from 20 to 80.<br/>
               <br/>
-              What portion of this 60% increase in risk is attributable to each of the two symptoms? (the numbers below do not need to add to 100)<br/>
+              What portion of this 60 point increase in risk is attributable to each of the two symptoms?<br/>
 
             <br/><br/>
               <div style={{textAlign: "center"}}>
               <table style={{display: "inline-block", textAlign: "left"}}><tbody>
                 <tr>
                   <td style={{textAlign: "center", width: "150px"}}>
-                    <TextField name="fever" value={this.state.fever} onChange={this.handleChange} style={{width: "20px", marginLeft: 3, marginRight: 3}} /> %<br/>
+                    <TextField name="fever" value={this.state.fever} onChange={this.handleChange} style={{width: "20px", marginLeft: 3, marginRight: 3}} /> points<br/>
                     Fever: <b style={{color: "#990000"}}>YES</b>
                   </td>
                   <td style={{textAlign: "center", width: "150px"}}>
-                    <TextField name="cough" value={this.state.cough} onChange={this.handleChange} style={{width: "20px", marginLeft: 3, marginRight: 3}} /> %<br/>
+                    <TextField name="cough" value={this.state.cough} onChange={this.handleChange} style={{width: "20px", marginLeft: 3, marginRight: 3}} /> points<br/>
                     Cough: <b style={{color: "#990000"}}>YES</b>
                   </td>
                 </tr>

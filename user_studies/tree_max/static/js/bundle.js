@@ -16156,7 +16156,7 @@ var AssignCompetitiveLoss = function (_React$Component) {
             _react2.default.createElement(
               'p',
               null,
-              'People\'s chance of having a certain disease is computed in the following manner:'
+              'People\'s risk of having a certain disease is computed in the following manner:'
             ),
             _react2.default.createElement(
               'div',
@@ -16184,7 +16184,7 @@ var AssignCompetitiveLoss = function (_React$Component) {
                     _react2.default.createElement(
                       'td',
                       null,
-                      '80% chance'
+                      '80'
                     )
                   ),
                   _react2.default.createElement(
@@ -16198,7 +16198,7 @@ var AssignCompetitiveLoss = function (_React$Component) {
                     _react2.default.createElement(
                       'td',
                       null,
-                      '0% chance'
+                      '0'
                     )
                   )
                 )
@@ -16213,7 +16213,7 @@ var AssignCompetitiveLoss = function (_React$Component) {
               _react2.default.createElement('br', null),
               _react2.default.createElement('br', null)
             ),
-            'Among all the people an equal proportion have fever AND cough, just fever, just cough, and neither fever nor cough. This means that before a doctor knows a person\'s symptoms their chance of having the disease is 20% (which is 80% * 1/4).',
+            'Among all the people an equal proportion have fever AND cough, just fever, just cough, and neither fever nor cough. This means that before a doctor knows a person\'s symptoms their risk of having the disease is 20 (which is (80+0+0+0)/4, the average risk).',
             _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
             'One person has the following symptoms:',
@@ -16262,12 +16262,12 @@ var AssignCompetitiveLoss = function (_React$Component) {
             _react2.default.createElement(
               'b',
               null,
-              'increased 60%'
+              'increased 60 points'
             ),
-            ' from 20% to 80%.',
+            ' from 20 to 80.',
             _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
-            'What portion of this 60% increase in risk is attributable to each of the two symptoms? (the numbers below do not need to add to 100)',
+            'What portion of this 60 point increase in risk is attributable to each of the two symptoms?',
             _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
             _react2.default.createElement('br', null),
@@ -16287,7 +16287,7 @@ var AssignCompetitiveLoss = function (_React$Component) {
                       'td',
                       { style: { textAlign: "center", width: "150px" } },
                       _react2.default.createElement(_TextField2.default, { name: 'fever', value: this.state.fever, onChange: this.handleChange, style: { width: "20px", marginLeft: 3, marginRight: 3 } }),
-                      ' %',
+                      ' points',
                       _react2.default.createElement('br', null),
                       'Fever: ',
                       _react2.default.createElement(
@@ -16300,7 +16300,7 @@ var AssignCompetitiveLoss = function (_React$Component) {
                       'td',
                       { style: { textAlign: "center", width: "150px" } },
                       _react2.default.createElement(_TextField2.default, { name: 'cough', value: this.state.cough, onChange: this.handleChange, style: { width: "20px", marginLeft: 3, marginRight: 3 } }),
-                      ' %',
+                      ' points',
                       _react2.default.createElement('br', null),
                       'Cough: ',
                       _react2.default.createElement(
